@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="62.5mm"
+   height="92.5mm"
+   viewBox="-46.25 -31.25 62.5 92.5"
+   version="1.1"
+   id="svg190"
+   sodipodi:docname="sticker_parameters.svg"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
+   inkscape:export-filename="sticker_parameters.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs194" />
+  <sodipodi:namedview
+     id="namedview192"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="1.4706763"
+     inkscape:cx="69.015868"
+     inkscape:cy="179.16927"
+     inkscape:window-width="1440"
+     inkscape:window-height="855"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg190" />
+  <g
+     fill="none"
+     stroke="#0000ff"
+     stroke-width="0.09"
+     id="Stick_area"
+     transform="matrix(0,-1,-1,0,-15,15)"
+     style="display:inline;fill:#e8e8e8;fill-opacity:1;stroke:#e8e8e8;stroke-width:1.09;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:label="Seda">
+    <path
+       d="m -46,27 v -54 c 0,-2.209139 1.790861,-4 4,-4 h 2.566512 c 0.336774,0 0.6722,0.04253 0.998316,0.126582 25.211495,6.49789 51.658849,6.49789 76.870344,0 C 38.761288,-30.95747 39.096714,-31 39.433488,-31 H 42 c 2.209139,0 4,1.790861 4,4 v 54 c 0,2.209139 -1.790861,4 -4,4 h -2.566512 c -0.336774,0 -0.6722,-0.04253 -0.998316,-0.126582 -25.211495,-6.49789 -51.658849,-6.49789 -76.870344,0 C -38.761288,30.95747 -39.096714,31 -39.433488,31 H -42 c -2.209139,0 -4,-1.790861 -4,-4 m 80.5,-41.5 h -29 v 29 h 29 v -29"
+       id="path182"
+       style="display:inline;fill:#e8e8e8;fill-opacity:1;stroke:#e8e8e8;stroke-width:1.09;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="cssssssssssscssscccccc" />
+  </g>
+  <path
+     d="m -42.00093,59.45825 h 54.00186 c 1.656909,0 3.000102,-1.335075 3.000102,-2.981975 v -2.551093 c -1e-6,-0.251063 -0.0319,-0.501121 -0.09494,-0.744239 -6.540309,-25.222753 -6.540309,-51.681915 0,-76.904668 0.06304,-0.243117 0.09494,-0.493176 0.09494,-0.744238 v -2.551093 c 0,-1.6469 -1.343193,-2.981976 -3.000102,-2.981976 h -54.00186 c -1.656909,0 -3.000102,1.335076 -3.000102,2.981976 v 2.551093 c 1e-6,0.251062 0.0319,0.501121 0.09494,0.744238 6.540309,25.222753 6.540309,51.681915 0,76.904668 -0.06304,0.243118 -0.09494,0.493176 -0.09494,0.744239 v 2.551093 c 0,1.6469 1.343193,2.981975 3.000102,2.981975"
+     id="path109628"
+     style="display:inline;fill:none;fill-opacity:1;stroke:#525252;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="cssscssssssscscsc"
+     inkscape:label="Okraj tmavy" />
+  <g
+     id="g60262"
+     transform="rotate(-90,-1.1630106,14.818802)"
+     style="display:inline"
+     inkscape:label="UST">
+    <path
+       class="fil2"
+       d="m -39.14998,16.056865 c 0,-0.359525 -0.445949,-0.646453 -0.857328,-0.504718 -0.2973,0.100253 -0.52546,0.311128 -0.698308,0.611884 -0.238531,0.41138 -0.321498,0.992151 -0.328412,1.59712 -0.01037,0.663739 0.141736,1.445014 0.494346,2.018871 0.05877,0.09334 0.245445,0.345697 0.414837,0.487433 0.297299,0.252358 0.515088,0.404465 0.463234,0.390637 -0.480519,-0.152107 -0.829673,-0.439035 -1.09586,-0.802017 -0.411379,-0.566943 -0.553115,-1.282536 -0.601512,-2.011956 -0.05531,-0.846958 0.127907,-1.980844 0.788189,-2.596185 0.221246,-0.203961 0.632625,-0.439035 1.137343,-0.383724 0.266187,0.03111 0.591142,0.152107 0.802017,0.335327 0.611884,0.532373 1.133886,1.666259 1.133886,2.502846 0,0.528916 -0.14865,1.005978 -0.380267,1.327476 -0.359525,0.494347 0.0484,1.047462 0.670653,0.83313 0.297299,-0.100252 0.525459,-0.311127 0.698307,-0.611884 0.238531,-0.411379 0.321499,-0.99215 0.328413,-1.59712 0.01037,-0.663738 -0.141736,-1.445013 -0.494347,-2.01887 -0.05877,-0.09334 -0.245445,-0.345697 -0.414836,-0.487433 -0.2973,-0.252359 -0.515089,-0.404466 -0.463234,-0.390638 0.480518,0.152107 0.829672,0.439036 1.095859,0.802017 0.411379,0.566943 0.553115,1.282536 0.601513,2.011957 0.05531,0.846958 -0.127908,1.980844 -0.788189,2.596184 -0.221246,0.203962 -0.632626,0.439036 -1.137343,0.383724 -0.860786,-0.0968 -1.555637,-0.988693 -1.769969,-1.769969 -0.210875,-0.760533 -0.210875,-1.64206 0.224703,-2.32654 0.08297,-0.131365 0.176305,-0.22816 0.179762,-0.397552 z"
+       id="path199"
+       inkscape:connector-curvature="0"
+       style="clip-rule:evenodd;fill:#ef7f1a;fill-rule:evenodd;stroke-width:0.00345697;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision" />
+    <text
+       x="21.055643"
+       y="39.620129"
+       class="fil1 fnt1"
+       id="text201"
+       style="font-style:italic;font-weight:bold;font-size:3.06149px;line-height:0%;font-family:Arial;clip-rule:evenodd;fill:#434242;fill-rule:evenodd;stroke-width:0.00345697;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       transform="rotate(90)">U</text>
+    <text
+       x="23.268105"
+       y="39.620129"
+       class="fil3 fnt1"
+       id="text203"
+       style="font-style:italic;font-weight:bold;font-size:3.06149px;line-height:0%;font-family:Arial;clip-rule:evenodd;fill:#5b5b5a;fill-rule:evenodd;stroke-width:0.00345697;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       transform="rotate(90)">S</text>
+    <text
+       x="25.307716"
+       y="39.620129"
+       class="fil4 fnt1"
+       id="text205"
+       style="font-style:italic;font-weight:bold;font-size:3.06149px;line-height:0%;font-family:Arial;clip-rule:evenodd;fill:#727271;fill-rule:evenodd;stroke-width:0.00345697;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+       transform="rotate(90)">T</text>
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:4.58611px;line-height:1;font-family:Cabin;-inkscape-font-specification:Cabin;display:inline;fill:#525252;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+     x="-14.667511"
+     y="28.341324"
+     id="text6277"
+     inkscape:label="Popisok"><tspan
+       sodipodi:role="line"
+       id="tspan6275"
+       style="font-size:4.58611px;text-align:center;text-anchor:middle;fill:#525252;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+       x="-14.667512"
+       y="28.341324">Personal mixed-field </tspan><tspan
+       sodipodi:role="line"
+       style="font-size:4.58611px;text-align:center;text-anchor:middle;fill:#525252;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-opacity:1"
+       x="-14.667511"
+       y="32.927433"
+       id="tspan29872">radiation dosimeter</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:2.46944px;line-height:1;font-family:Cabin;-inkscape-font-specification:Cabin;white-space:pre;inline-size:54.9887;display:inline;stroke-width:0.264583"
+     x="115.07551"
+     y="23.067835"
+     id="text2530"
+     transform="translate(-164.90723,27.352991)"
+     inkscape:label="Designed"><tspan
+       x="115.07551"
+       y="23.067835"
+       id="tspan415"><tspan
+         style="text-align:center;text-anchor:middle;fill:#999999"
+         id="tspan411">Designed and manufactured by </tspan><tspan
+         style="text-align:center;text-anchor:middle;fill:#525252"
+         id="tspan413">
+</tspan></tspan><tspan
+       x="115.07551"
+       y="25.537275"
+       id="tspan423"><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#737373"
+         id="tspan417">Universal Scientific Technologies</tspan><tspan
+         style="text-align:center;text-anchor:middle;fill:#525252"
+         id="tspan419"> </tspan><tspan
+         style="text-align:center;text-anchor:middle;fill:#999999"
+         id="tspan421">s.r.o 
+</tspan></tspan><tspan
+       x="115.07551"
+       y="28.006716"
+       id="tspan431"><tspan
+         style="text-align:center;text-anchor:middle;fill:#999999"
+         id="tspan425">in the </tspan><tspan
+         style="font-weight:bold;text-align:center;text-anchor:middle;fill:#737373"
+         id="tspan427">Czech Republic</tspan><tspan
+         style="text-align:center;text-anchor:middle;fill:#999999"
+         id="tspan429">.</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:7.53909px;line-height:1;font-family:Cabin;-inkscape-font-specification:Cabin;display:inline;stroke:none;stroke-width:0.213707;stroke-dasharray:none;stroke-opacity:1"
+     x="-32.874336"
+     y="23.057644"
+     id="text2937"
+     transform="scale(1.0685305,0.93586471)"
+     inkscape:label="Nadpis"><tspan
+       sodipodi:role="line"
+       id="tspan2935"
+       style="font-weight:bold;font-size:7.53909px;stroke:none;stroke-width:0.213707;stroke-dasharray:none;stroke-opacity:1"
+       x="-32.874336"
+       y="23.057644">SPACEDOS</tspan></text>
+  <path
+     d="m -41.999998,59.45825 h 54 c 1.656854,0 3,-1.335061 3,-2.981942 v -2.551063 c -1e-6,-0.25106 -0.0319,-0.501115 -0.09494,-0.74423 -6.5400844,-25.222461 -6.5400844,-51.6813192 0,-76.903781 0.06304,-0.243114 0.09494,-0.493169 0.09494,-0.74423 v -2.551063 c 0,-1.64688 -1.343146,-2.981941 -3,-2.981941 h -54 c -1.656854,0 -3,1.335061 -3,2.981941 v 2.551063 c 10e-7,0.251061 0.0319,0.501116 0.09494,0.74423 6.540084,25.2224618 6.540084,51.68132 0,76.903781 -0.06304,0.243115 -0.09494,0.49317 -0.09494,0.74423 v 2.551063 c 0,1.646881 1.343146,2.981942 3,2.981942 M 0.50000163,-19.563204 V 9.2622317 c 0,0.5489603 -0.447715,0.9939803 -1,0.9939803 H -29.499998 c -0.552285,0 -1,-0.44502 -1,-0.9939803 V -19.563204 c 0,-0.548961 0.447715,-0.993981 1,-0.993981 h 28.99999963 c 0.552285,0 1,0.44502 1,0.993981"
+     id="path185"
+     style="display:inline;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0897287;stroke-linecap:round;stroke-opacity:1"
+     sodipodi:nodetypes="cssscssssssscscsccsssssssc"
+     inkscape:label="Orez"
+     sodipodi:insensitive="true" />
+</svg>
