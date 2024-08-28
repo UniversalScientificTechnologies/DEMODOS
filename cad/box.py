@@ -10,8 +10,8 @@ import cadquery as cq
 
 #with bd.BuildPart() as base:
 
-length = 100-2
-width = 70-2
+length = 100
+width = 70
 
 with BuildSketch() as ci:
     Circle(150)
@@ -54,19 +54,21 @@ with BuildPart() as part:
 
 
 with BuildPart() as cover:
-    Box(89-0.5, 49-0.5, 43/2-0.4, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    Box(89-0.5, 49-0.5, 43/2-1.4, align=(Align.CENTER, Align.CENTER, Align.MIN))
 
     with Locations((00, 0, 1)):
-        Box(89-0.5-2, 49-0.5-2, 43/2, align=(Align.CENTER, Align.CENTER, Align.MIN), mode=Mode.SUBTRACT)
+        Box(89-0.5-3, 49-0.5-3, 43/2, align=(Align.CENTER, Align.CENTER, Align.MIN), mode=Mode.SUBTRACT)
 
     chamfer(edges().filter_by(Axis.Z), 0.5)
 
     with Locations((00, 0, 4)):
         Box(89-0.5-2+5, 15, 43/2, align=(Align.CENTER, Align.CENTER, Align.MIN), mode=Mode.SUBTRACT)
 
+    with Locations((20-10, 0, 0), (20+10, 0, 0)):
+        Box(5, 49-0.5, 43/2-1.4, align=(Align.CENTER, Align.CENTER, Align.MIN))
 
     with Locations((0, -20, 11), (0, 20, 11)):
-        Cylinder(1.2, 200, mode=Mode.SUBTRACT, rotation=(0, 90, 0))
+        Cylinder(1.1, 200, mode=Mode.SUBTRACT, rotation=(0, 90, 0))
 
 
 
