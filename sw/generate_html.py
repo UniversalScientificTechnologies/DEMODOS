@@ -28,8 +28,8 @@ class Dozimetr:
         self.update_required = False
 
         # Načtení dat ze souboru, pokud existuje
-        if os.path.exists(f"{self.file_prefix}.json"):
-            with open(f"{self.file_prefix}.json", "r") as f:
+        if os.path.exists(f"data/{self.file_prefix}.json"):
+            with open(f"data/{self.file_prefix}.json", "r") as f:
                 self.data = json.load(f)
                 self.total_dose = self.data.get("total_dose", 0)
         
@@ -82,7 +82,10 @@ class Dozimetr:
                 self.total_dose += self.data['dose_rate'] / 3600
 
             # Uložení aktuálního stavu do JSON souboru
-            with open(f"{self.file_prefix}.json", "w") as f:
+            with open(f"data/{self.file_prefix}.json", "w") as f:
+                json.dump(self.data, f)
+
+            with open(f"data/{self.file_prefix}.html", "w") as f:
                 json.dump(self.data, f)
 
             self.last_update_time = current_time
