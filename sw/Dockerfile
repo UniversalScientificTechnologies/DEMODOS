@@ -10,7 +10,7 @@ COPY requirements.txt /app/requirements.txt
 
 # Instalace Python závislostí
 #RUN apt-get update && apt-get install -y python3-ncurses
-#RUN pip3 install -r /app/requirements.txt --break-system-packages
+RUN pip3 install -r /app/requirements.txt --break-system-packages
 
 # Kopírování Nginx konfigurace
 COPY nginx.conf /etc/nginx/nginx.conf
