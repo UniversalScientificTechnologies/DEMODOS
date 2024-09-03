@@ -45,8 +45,34 @@ with BuildPart() as part:
     Box(29+60, 29+20, 41, mode=Mode.SUBTRACT)
         # Box(29+50, 29+10, 40, mode=Mode.SUBTRACT)
 
-    with Locations((0, -20, 11), (0, 20, 11)):
-        Cylinder(1.2, 200, mode=Mode.SUBTRACT, rotation=(0, 90, 0))
+
+    with BuildPart(mode=Mode.SUBTRACT) as p:
+        with Locations((0, -20, 11), (0, 20, 11)):
+            Cylinder(2.1, 200, rotation=(0, 90, 0))
+            Cylinder(2.1, length-4, rotation=(0, 90, 0), mode=Mode.SUBTRACT)
+            Cylinder(1.1, 200, rotation=(0, 90, 0))
+    
+
+    with BuildSketch(part.faces().filter_by(Axis.X)[0]) as s:
+        with Locations((-4,0), (4, 0)):
+            Circle(10.5/2)
+        make_hull()
+    extrude(amount=-2.5, mode=Mode.SUBTRACT)
+
+
+    with BuildSketch(part.faces().filter_by(Axis.X)[0]) as s:
+        with Locations((-4.5,0), (4.5, 0)):
+            Circle(3)
+        make_hull()
+    extrude(amount=-8, mode=Mode.SUBTRACT)
+
+    # with BuildPart(part.faces().filter_by(Axis.X)[0].offset(-2)) as p:
+    #     with Locations((-25,0), (25, 0), (13, 0), (-13, 0)):
+    #         Cylinder(3.5, 13, rotation=(90, 0, 0))
+    #     fillet(p.edges(), 2)
+
+    # with Locations((0, -5, 11), (0, 5, 11)):
+    #     Cylinder(3, 100, mode=Mode.SUBTRACT, rotation=(0, 90, 0), align=(Align.CENTER, Align.CENTER, Align.MAX))
 
     if False:
         with Locations((20-30, 0+14, 10)):
@@ -68,7 +94,10 @@ with BuildPart() as cover:
         Box(5, 49-0.5, 43/2-1.4, align=(Align.CENTER, Align.CENTER, Align.MIN))
 
     with Locations((0, -20, 11), (0, 20, 11)):
-        Cylinder(1.1, 200, mode=Mode.SUBTRACT, rotation=(0, 90, 0))
+        Cylinder(0.9, 200, mode=Mode.SUBTRACT, rotation=(0, 90, 0))
+
+    with Locations((00, 0, 2)):
+        Box(80, 43, 10, align=(Align.CENTER, Align.CENTER, Align.MIN), mode=Mode.SUBTRACT)
 
 
 
