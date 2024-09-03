@@ -7,8 +7,10 @@ import random
 import time
 import json
 import os
-import keyboard
-
+import sys
+import tty
+import termios
+import select
 
 class Dozimetr:
     def __init__(self, id, name="Dozimetr"):
@@ -29,20 +31,15 @@ class Dozimetr:
         if os.path.exists(f"{self.file_prefix}.json"):
             with open(f"{self.file_prefix}.json", "r") as f:
                 self.data = json.load(f)
-                print("Nacitam data z JSON souboru:", self.data)
                 self.total_dose = self.data.get("total_dose", 0)
         
-        print(self.file_prefix, self.total_dose)
-
     def generate_data(self):
-        heartrate = random.randint(60, 120)
-
         data =  {
             "cps": self.cps,
             "dose_rate": 0,
             "alert": 0,
             "level": 0,
-            "total_dose": 0
+            "total_dose": self.total_dose
         }
 
         if self.cluster_counter > 0:
@@ -57,7 +54,6 @@ class Dozimetr:
         dose_rate = data['cps'] * (0.1 + random.uniform(-0.05,0.05))
         data['alert'] = data['cps'] > self.threshold
 
-        data["total_dose"] += dose_rate / 0.36
 
         return data
 
@@ -65,7 +61,11 @@ class Dozimetr:
         """Aktualizace dat, pokud je vyžadována nebo pokud uplynulo 10 sekund."""
         current_time = time.time()
         if current_time - self.last_update_time >= 10 or self.update_required or force_update:
+            print(f"Updating dozimeter {self.id}")
             self.data = self.generate_data()
+
+            self.total_dose += self.data['cps'] / 3600
+            self.data['total_dose'] = self.total_dose
 
             if self.noise:
                 self.data['cps'] += random.randint(-10, 10)
@@ -98,16 +98,24 @@ class Dozimetr:
 
         # Zobrazení všech hodnot, které jsou ukládány do JSON souboru
         content_lower = (
-            f"[bold]CPS:[/bold] {self.data.get('cps', 0):.2f} CPS\n"
-            f"[bold]Total Dose:[/bold] {self.data.get('total_dose', 0)/10:.2f} mSv\n"
+            f"[bold]CPS:[/bold] {self.data.get('cps', 0)}\n"
+            f"[bold]Total Dose:[/bold] {self.data.get('total_dose', 0) / 10:.2f} mSv\n"
             f"[bold]Dose rate:[/bold] {self.data.get('dose_rate', 0):.2f} uSv/h\n"
-            f"[bold]Alert:[/bold] {'Yes' if self.data.get('alert', False) else 'No'}\n"
+            f"[bold]Alert:[/bold] {'Yes' if self.data.get('alert', False) else 'No'}"
         )
 
         separator = "-" * 20
         panel_content = f"{content_upper}\n{separator}\n{content_lower}"
 
         return Panel(panel_content, title=title, border_style="bold green" if selected else "white")
+
+import sys
+import tty
+import termios
+import select
+from getkey import getkey, keys
+
+
 
 def main():
     console = Console()
@@ -122,9 +130,9 @@ def main():
     layout = Layout()
 
     layout.split_column(
-        Layout(name="top", size=4),
+        Layout(name="top", size=3),
         Layout(name="upper"),
-        Layout(name="lower", size=4),
+        Layout(name="lower", size=3),
     )
 
     info_text = (
@@ -133,13 +141,22 @@ def main():
     )
 
     with Live(layout, console=console, refresh_per_second=10):
-        while True:
-            layout["top"].update(
-                Panel(
-                    Text("SPACEDOS training set", justify="center"), 
-                    border_style="bold red"
-                )
+            
+        layout["top"].update(
+            Panel(
+                Text("SPACEDOS training set", justify="center"), 
+                border_style="bold red"
             )
+        )
+        
+        layout["lower"].update(
+            Panel(
+                Text(info_text, justify="center"),
+                border_style="bold blue",
+            )
+        )
+
+        while True:
             
             layout["upper"].split_row(
                 Layout(dozimeters[0].render(selected_dozimeter == 0)),
@@ -147,46 +164,41 @@ def main():
                 Layout(dozimeters[2].render(selected_dozimeter == 2)),
             )
 
-            layout["lower"].update(
-                Panel(
-                    Text(info_text, justify="center"),
-                    border_style="bold blue",
-                )
-            )
-
-            # Kontrola klávesových vstupů
-            if keyboard.is_pressed("q"):
+            key = getkey()
+            
+            if key == "q":
                 break
-            elif keyboard.is_pressed("tab"):
+            elif key == "\t":  # Tabulátor pro přepnutí dozimetru
                 selected_dozimeter = (selected_dozimeter + 1) % len(dozimeters)
                 time.sleep(0.1)
-            elif keyboard.is_pressed("r"):
+            elif key == "r":
                 for dozimetr in dozimeters:
                     dozimetr.reset()
                 time.sleep(0.2)
-            elif keyboard.is_pressed("n"):
+            elif key == "n":
                 dozimeters[selected_dozimeter].noise = not dozimeters[selected_dozimeter].noise
                 dozimeters[selected_dozimeter].update_required = True
                 time.sleep(0.2)
-            elif keyboard.is_pressed("up"):
+            elif key == "\x1b[A":  # Šipka nahoru
                 dozimeters[selected_dozimeter].cps += 5
                 dozimeters[selected_dozimeter].update_required = True
                 time.sleep(0.1)
-            elif keyboard.is_pressed("down"):
+            elif key == "\x1b[B":  # Šipka dolů
                 dozimeters[selected_dozimeter].cps -= 5
                 dozimeters[selected_dozimeter].update_required = True
                 time.sleep(0.1)
-            elif keyboard.is_pressed("right"):
+            elif key == "\x1b[C":  # Šipka doprava
                 dozimeters[selected_dozimeter].threshold += 10
                 dozimeters[selected_dozimeter].update_required = True
                 time.sleep(0.1)
-            elif keyboard.is_pressed("left"):
+            elif key == "\x1b[D":  # Šipka doleva
                 dozimeters[selected_dozimeter].threshold -= 10
                 dozimeters[selected_dozimeter].update_required = True
                 time.sleep(0.1)
 
             for dozimetr in dozimeters:
                 dozimetr.update()
+
 
 if __name__ == "__main__":
     main()
