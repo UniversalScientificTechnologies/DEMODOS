@@ -52,7 +52,10 @@ class Dozimetr:
         data['cps'] = max(0, min(data['cps'], 1000))
 
         dose_rate = data['cps'] * (0.1 + random.uniform(-0.05,0.05))
+        
         data['alert'] = data['cps'] > self.threshold
+        data['dose_rate'] = dose_rate
+        data['total_dose'] = self.total_dose
 
 
         return data
@@ -61,7 +64,6 @@ class Dozimetr:
         """Aktualizace dat, pokud je vyžadována nebo pokud uplynulo 10 sekund."""
         current_time = time.time()
         if current_time - self.last_update_time >= 10 or self.update_required or force_update:
-            print(f"Updating dozimeter {self.id}")
             self.data = self.generate_data()
 
             self.total_dose += self.data['cps'] / 3600
@@ -75,6 +77,9 @@ class Dozimetr:
                 self.last_above_threshold = time.time()
             elif time.time() - self.last_above_threshold > 180:
                 self.data['alert'] = False
+
+            if not self.update_required or not force_update:
+                self.total_dose += self.data['dose_rate'] / 3600
 
             # Uložení aktuálního stavu do JSON souboru
             with open(f"{self.file_prefix}.json", "w") as f:
@@ -164,7 +169,7 @@ def main():
                 Layout(dozimeters[2].render(selected_dozimeter == 2)),
             )
 
-            key = getkey()
+            key = getkey(blocking=False)
             
             if key == "q":
                 break
