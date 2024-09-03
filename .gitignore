@@ -1,0 +1,4 @@
+sw/*.json
+sw/*.html
+sw/**/*.json
+sw/**/*.html
