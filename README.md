@@ -1,6 +1,9 @@
 # Dosimeter Simulator for Space Missions
 
-This project was developed by (UST)[https://www.ust.cz/] in collaboration with the [Institute of Nuclear Physics of the Czech Academy of Sciences](https://ujf.cas.cz) and the [Hydronaut H03 DeepLab](https://hydronaut.eu/). The primary goal is to create a simulator for a remotely controlled Personal Active Dosimeter (PAD) and a Dosimeter Display Unit (DDU) in the form of wristwatches for astronauts.
+This project was developed by [UST](https://www.ust.cz/) in collaboration with the [Institute of Nuclear Physics of the Czech Academy of Sciences](https://ujf.cas.cz) and the [Hydronaut H03 DeepLab](https://hydronaut.eu/). The primary goal is to create a simulator for a remotely controlled Personal Active Dosimeter (PAD) and a Dosimeter Display Unit (DDU) in the form of wristwatches for astronauts.
+
+![EOSR4434](https://github.com/user-attachments/assets/acbfe5dc-d8ca-4c22-b7dc-aa1cb41bda3a)
+
 
 ## Introduction
 
@@ -29,6 +32,10 @@ The remote control of the dosimeter was chosen to ensure that trainees are not u
 
 ## PAD - Personal active dosimeter 
 
+![EOSR4449](https://github.com/user-attachments/assets/1ad55b66-e335-4a74-a256-f7421073e868)
+
+
+
 ## DDU - Dosimeter display unit
 
-
+![EOSR4462](https://github.com/user-attachments/assets/75c6c340-0280-4187-afe0-17ff69ed802a)
