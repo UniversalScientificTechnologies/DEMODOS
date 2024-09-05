@@ -38,4 +38,4 @@ The remote control of the dosimeter was chosen to ensure that trainees are not u
 
 ## DDU - Dosimeter display unit
 
-![EOSR4462](https://github.com/user-attachments/assets/75c6c340-0280-4187-afe0-17ff69ed802a)
+![PXL_20240904_150048028](https://github.com/user-attachments/assets/b3888b79-f818-4eb6-a282-9b013ce5907d)
