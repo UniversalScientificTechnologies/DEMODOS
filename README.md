@@ -1,16 +1,16 @@
-# Dosimeter Simulator for Space Missions
+# SPACEDOS Dosimeter Simulator for Training Missions
 
-This project was developed by [UST](https://www.ust.cz/) in collaboration with the [Institute of Nuclear Physics of the Czech Academy of Sciences](https://ujf.cas.cz) and the [Hydronaut H03 DeepLab](https://hydronaut.eu/). The primary goal is to create a sophisticated simulation system that functions as a remotely controlled Personal Active Dosimeter (PAD) and a Dosimeter Display Unit (DDU) designed as wearable wristwatch-like devices for astronauts.
+This project was developed by [UST](https://www.ust.cz/) in collaboration with the [Institute of Nuclear Physics of the Czech Academy of Sciences](https://ujf.cas.cz) and the [Hydronaut H03 DeepLab](https://hydronaut.eu/). The primary goal is to create a sophisticated simulation system that functions as a remotely controlled [Personal Active Dosimeter (PAD)](https://en.wikipedia.org/wiki/Electronic_personal_dosimeter) and a Dosimeter Display Unit (DDU) designed as wearable wristwatch-like devices for astronauts.
 
 ![EOSR4434](https://github.com/user-attachments/assets/acbfe5dc-d8ca-4c22-b7dc-aa1cb41bda3a)
 
 ## Introduction
 
-The Dosimeter Simulator project is designed to support training and practice missions for space flights, specifically for the [Promise mission](https://www.vesmirprolidstvo.cz/cs/aktuality/PROMISE/), taking place in September 2024 at [Little Moon City Prague](https://www.littlemooncity.eu/). This simulator allows mission operators to set and simulate radiation levels that astronauts might encounter during their space missions.
+The SPACEDOS demo project is designed to support training and practice missions for space flights, specifically for the [Promise mission](https://www.vesmirprolidstvo.cz/cs/aktuality/PROMISE/), taking place in September 2024 at [Little Moon City Prague](https://www.littlemooncity.eu/). This simulator allows mission operators to set and simulate radiation levels that astronauts might encounter during their space missions.
 
-The main goal of this simulator is to provide a comprehensive tool for complex radiation event exercises. The system is based on the real particle detector-spectrometer **SPACEDOS**, enhancing realism during training. It enables multi-person exercises by simulating hotspots and areas with varying radiation exposure. Each individual sees their specific particle flux and total received dose on their DDU and PAD. This allows for detailed analysis of each participant's behavior in terms of optimizing overall radiation exposure during missions.
+The main goal of this simulator is to provide a comprehensive tool for complex radiation event exercises. The system is based on the real particle detector-spectrometer [SPACEDOS](https://github.com/UniversalScientificTechnologies/SPACEDOS02), enhancing realism during training. It enables multi-person exercises by simulating hotspots and areas with varying radiation exposure. Each individual sees their specific particle flux and total received dose on their DDU and PAD. This allows for detailed analysis of each participant's behavior in terms of optimizing overall radiation exposure during missions.
 
-Importantly, this system does not endanger the health of simulation participants, as there is no need to expose them to dangerous radiation. The remote operation ensures that trainees can safely experience realistic scenarios without any actual radiation exposure.
+**Importantly, this system does not endanger the health of simulation participants, as there is no need to expose them to dangerous radiation. The remote operation ensures that trainees can safely experience realistic scenarios without any actual radiation exposure.**
 
 ## Flexibility and Modifiability
 
@@ -44,7 +44,7 @@ To enhance realism, the software adds noise to the simulated data, mimicking the
 
 ### Remote Operation
 
-The remote control of the dosimeter was chosen to ensure that trainees are not unnecessarily exposed to artificial radioactive sources during their training. This approach maximizes safety while maintaining the effectiveness of the training exercises.
+The remote control of the dosimeter was chosen to ensure that trainees were not unnecessarily exposed to artificial radioactive sources during their training. This approach maximizes safety while maintaining the effectiveness of the training exercises.
 
 The system for the **Promise mission** was designed to operate over a Wi-Fi network covering the entire training area. The system is highly flexible and can be adapted to other technologies depending on the complexity of the mission space.
 
