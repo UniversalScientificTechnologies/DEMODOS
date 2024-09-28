@@ -1,8 +1,8 @@
 # SPACEDOS Dosimeter Simulator for Training Missions
 
-This project was developed by [UST](https://www.ust.cz/) in collaboration with the [Institute of Nuclear Physics of the Czech Academy of Sciences](https://ujf.cas.cz) and the [Hydronaut H03 DeepLab](https://hydronaut.eu/). The primary goal is to create a sophisticated simulation system that functions as a remotely controlled [Personal Active Dosimeter (PAD)](https://en.wikipedia.org/wiki/Electronic_personal_dosimeter) and a Dosimeter Display Unit (DDU) designed as wearable wristwatch-like devices for astronauts.
+This project was developed by [UST](https://www.ust.cz/) in collaboration with the [Institute of Nuclear Physics of the Czech Academy of Sciences](https://ujf.cas.cz) and the [Hydronaut H03 DeepLab](https://hydronaut.eu/). The primary goal is to create a sophisticated simulation and training system that functions as a remotely controlled [Personal Active Dosimeter (PAD)](https://en.wikipedia.org/wiki/Electronic_personal_dosimeter) and a Dosimeter Display Unit (DDU) designed as wearable wristwatch-like devices for astronauts.
 
-![EOSR4434](https://github.com/user-attachments/assets/acbfe5dc-d8ca-4c22-b7dc-aa1cb41bda3a)
+![SPACEDOS PAD with Dosimeter Display Unit](https://github.com/user-attachments/assets/acbfe5dc-d8ca-4c22-b7dc-aa1cb41bda3a)
 
 ## Introduction
 
@@ -51,18 +51,18 @@ The system for the **Promise mission** was designed to operate over a Wi-Fi netw
 
 ## PAD - Personal Active Dosimeter 
 
-![EOSR4449](https://github.com/user-attachments/assets/1ad55b66-e335-4a74-a256-f7421073e868)
+![SPACEDOS Personal Active Dosimeter](https://github.com/user-attachments/assets/1ad55b66-e335-4a74-a256-f7421073e868)
 
 ## DDU - Dosimeter Display Unit
 
-![PXL_20240904_150048028](https://github.com/user-attachments/assets/b3888b79-f818-4eb6-a282-9b013ce5907d)
+![SPACEDOS Dosimeter Display Unit](https://github.com/user-attachments/assets/b3888b79-f818-4eb6-a282-9b013ce5907d)
 
 
 
-# Missione Promise
+# PROMISE Mission
 
 The first application of the system took place during the successful PROMISE training mission in the Hydronaut SpaceLab, attended by Czech ESA reserve astronaut Major Aleš Svoboda, Miro Rozložník, and Matyáš Šanda. In the following photo, the members of the simulation can be seen, along with their training dosimeters and habitat.
 
-![PXL_20240906_113316269](https://github.com/user-attachments/assets/1b40ea9f-2b88-410b-9eb6-cb28a5ac173e)
+![The hydronaut habitat](https://github.com/user-attachments/assets/1b40ea9f-2b88-410b-9eb6-cb28a5ac173e)
 
-![obrazek](https://github.com/user-attachments/assets/577bf104-f723-4bd3-977e-e23b2fbb7165)
+![Mission crew](https://github.com/user-attachments/assets/577bf104-f723-4bd3-977e-e23b2fbb7165)
