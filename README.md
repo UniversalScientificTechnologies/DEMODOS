@@ -23,7 +23,7 @@ One of the key advantages of this simulator is that it does not endanger the hea
 ![PXL_20240906_104541024-EDIT](https://github.com/user-attachments/assets/503f4cfc-e8f6-4ec3-b39a-3f0ce3d34f56)
 
 
-## Solution Description
+## System Description
 
 ### Components
 
@@ -31,6 +31,15 @@ One of the key advantages of this simulator is that it does not endanger the hea
 2. **Dosimeter Display Unit (DDU)**: A wristwatch-like display unit worn by astronauts, showing current radiation values measured by the PAD.
 3. **Vibration Alert on DDU**: The DDU is equipped with a vibration motor that triggers alerts when preset radiation limits are exceeded. This feature ensures that astronauts are immediately informed of critical situations without distracting them from their mission tasks.
 4. **Mission Messaging**: The DDU can also display important mission status messages, ensuring seamless communication with mission control in case of urgent events.
+
+#### PAD parameters
+
+- **Dimensions**: 98x69x22 mm 
+- **Charging Connector**: USB-C.
+- **Uptime**: 20 hours at 20 s update interval
+- **Operating Temperature**: 0°C to +50°C
+- **Mass**: 74g
+- **Weather Resistance**: IP40
 
 ## Software
 
