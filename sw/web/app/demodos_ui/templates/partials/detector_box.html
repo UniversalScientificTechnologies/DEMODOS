@@ -1,0 +1,84 @@
+<div class="box detector-box" id="detector-{{ user.id }}"
+    
+    <h2 class="subtitle mb-3">
+        <input type="checkbox" id="detector-checkbox" name="detector-checkbox-{{ user.id }}"> 
+        ({{ user.id }}) {{ user.name }}
+    </h2>
+    <hr class="my-1">
+    
+    <div>
+        <div>
+            <span class="value-name">CPS: </span>
+            <span>
+                <input type="number" id="cps-value" name="cps" value="{{ user.set_cps }}" style="width: 30%;"
+                oninput="document.getElementById('cps-slider-{{ user.id }}').value = this.value;"
+                >
+            </span>
+        </div>
+        <div>
+            <input type="range" id="cps-slider" min="0" max="500" value="{{ user.set_cps }}"
+                hx-post="/detector/{{ user.id }}/update-cps/"
+                hx-trigger="input,changed"
+                hx-swap="none"
+                name="set_cps"
+            >
+        </div>
+    </div>
+    
+    <div>
+        <div>
+        <span class="value-name">Threshold: </span>
+        <span>
+            <input type="value" id="threshold-value" name="threshold" value="{{ user.set_threshold }}" style="width: 30%;">
+        </div>  
+        <div>
+        <input type="range" id="threshold-slider" min="0" max="500" value="{{ user.set_threshold }}"
+            hx-post="/detector/{{ user.id }}/update-threshold/"
+            hx-trigger="input"
+            hx-swap="none"
+            name="set_threshold"
+           >
+        </div>
+    </div>
+    <div>
+        <span class="value-name">Noise: </span>
+        <span class="value" id="noise">{{ user.noise|yesno:"On,Off" }}</span>
+        <input type="checkbox" id="noise-toggle" name="set_noise"
+            hx-post="/detector/{{ user.id }}/update-noise/"
+            hx-trigger="change"
+            hx-swap="none"
+            name="set_noise"
+            {{ user.noise|yesno:"checked," }}>
+    </div>
+    <hr class="my-1">
+    <div>
+        <span class="value-name">CPS: </span>
+        <span class="value" id="current-cps-value">{{ user.current_cps }}</span>
+    </div>
+    <div>
+        <span class="value-name">Dose: </span>
+        <span class="value" id="dose-value">{{ user.dose }} mGy</span>
+    </div>
+    <div>
+        <span class="value-name">Total Dose: </span>
+        <span class="value" id="total-dose-value">{{ user.total_dose }} mSv</span>
+    </div>
+    <div>
+        <span class="value-name">Dose Rate: </span>
+        <span class="value" id="dose-rate-value">{{ user.dose_rate }} μSv/h</span>
+    </div>
+    <div>
+        <span class="value-name">Alarm: </span>
+        <span class="value" id="alarm-value">{{ user.alert|yesno:"Yes,No" }}</span>
+    </div>
+    <hr class="my-1">
+    <div>
+        <span class="value-name">Location: </span>
+        <span class="value" id="location-value">{{ user.location.name }}</span>
+    </div>
+    <div>
+        <span class="value-name">Group: </span>
+        <span class="value" id="group-value">{{ user.group.name }}</span>
+    </div>
+</div>
+

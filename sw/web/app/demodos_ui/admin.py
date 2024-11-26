@@ -11,7 +11,7 @@ class LocationAdmin(admin.ModelAdmin):
 
 @admin.register(Detector)
 class DetectorAdmin(admin.ModelAdmin):
-    list_display = ("name", "group", "location", "current_cps", "threshold", "noise", "total_dose", "dose_rate", "alert")
+    list_display = ("name", "group", "location", "current_cps", "set_cps", "set_threshold", "noise", "total_dose", "dose_rate", "alert")
 
 @admin.register(HistoricalData)
 class HistoricalDataAdmin(admin.ModelAdmin):

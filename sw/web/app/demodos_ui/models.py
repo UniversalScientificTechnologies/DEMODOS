@@ -26,7 +26,8 @@ class Detector(models.Model):
 
     # Specifické hodnoty detektoru
     current_cps = models.IntegerField(default=0)  # Aktuální CPS
-    threshold = models.IntegerField(default=0)  # Prahová hodnota
+    set_cps = models.IntegerField(default=0)  # Nastavený CPS
+    set_threshold = models.IntegerField(default=0)  # Prahová hodnota
     noise = models.BooleanField(default=False)  # Šum zapnuto/vypnuto
     total_dose = models.FloatField(default=0.0)  # Celková dávka (mSv)
     dose_rate = models.FloatField(default=0.0)  # Dávková rychlost (μSv/h)

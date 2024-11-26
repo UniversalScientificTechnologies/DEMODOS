@@ -21,11 +21,18 @@ from .views import dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path("", dashboard.home, name="detector_dashboard"),
     path("dashboard/", dashboard.detector_dashboard, name="detector_dashboard"),
+    path("settings/", dashboard.settings, name="settings"),
+    path("docs/", dashboard.docs, name="docs"),
+    path("docs/<str:filename>/", dashboard.docs, name="docs"),
     path("update-dose/<int:user_id>/", dashboard.update_dose, name="update_dose"),
     path("data-endpoint/", dashboard.data_endpoint, name="data_endpoint"),
     path("clear-data/", dashboard.clear_historical_data, name="clear_data"),
-    path("<str:entity_type>/<int:entity_id>/update-cps/", dashboard.update_cps, name="update_cps"),
+    path("get_data/", dashboard.get_data, name="get_data"),
+    path("<str:entity_type>/<int:entity_id>/update-cps/", dashboard.update_params, name="update_cps"),
+    path("<str:entity_type>/<int:entity_id>/update-threshold/", dashboard.update_params, name="update_threshold"),
+    path("<str:entity_type>/<int:entity_id>/update-noise/", dashboard.update_params, name="update_noise"),
+
 
 ]

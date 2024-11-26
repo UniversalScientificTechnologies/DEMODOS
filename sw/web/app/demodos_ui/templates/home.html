@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}DEMODOS control tool{% endblock %}
+
+{% block content %}
+
+
+
+
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Welcome to DEMODOS</h1>
+            <p class="subtitle">Control and monitor your detectors with ease.</p>
+
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter has-equal-height">
+                    <a href="/dashboard" class="box">
+                        <h2 class="title is-4">Manage Mission</h2>
+                        <p>View and control individual detectors in your simulation.</p>
+                    </a>
+                </div>
+                <div class="column is-one-quarter has-equal-height">
+                    <a href="/settings" class="box">
+                        <h2 class="title is-4">Settings</h2>
+                        <p>Configure global settings for your simulation.</p>
+                    </a>
+                </div>
+                <div class="column is-one-quarter has-equal-height">
+                    <a href="/docs" class="box">
+                        <h2 class="title is-4">Manual</h2>
+                        <p>Access the user manual for detailed instructions and guidelines.</p>
+                    </a>
+                </div>
+                <div class="column is-one-quarter has-equal-height">
+                    <a href="/docs/about" class="box">
+                        <h2 class="title is-4">About</h2>
+                        <p>Learn more about DEMODOS and its creators.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

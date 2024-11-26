@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DEMOS Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+
+    <style>
+        .value-name {
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hlavička -->
+    <nav class="navbar has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">DEMOS</a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/dashboard/">Dashboard</a>
+                <a class="navbar-item" href="/settings/">Settings</a>
+                <a class="navbar-item" href="/docs/">Documentation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Obsah -->
+    <section class="section">
+        <div class="container is-widescreen">
+            {% block content %}
+            <!-- Zde se bude vkládat obsah jednotlivých views -->
+            {% endblock %}
+        </div>
+    </section>
+
+    <!-- Patička -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>© 2024 DEMOS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/htmx.org"></script>
+
+    
+</body>
+</html>
