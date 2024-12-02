@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Detector Dashboard{% endblock %}
+{% block title %}DEMODOS Dashboard{% endblock %}
 
 {% block content %}
-<h1 class="title has-text-centered">Detector Dashboard</h1>
-<div class="columns is-multiline">
-    <div class="column is-one-sixth">
+<h1 class="title has-text-centered">DEMODOS Dashboard</h1>
+<div class="columns">
+    <div class="column is-4">
+        <div class="box">
+            <h2 class="subtitle mb-3">Mission settings</h2>
+        </div> 
+    </div>
+    <div class="column is-4">
         <div class="box">
             <h2 class="subtitle mb-3">Global actions</h2>
             <div>
@@ -15,23 +20,25 @@
             </div>
             <hr class="my-2">
             <div>
-                <span class="value-name">Set CPS:</span>
-                <input type="number" id="cps-all-value" name="cps" value="{{ user.set_cps }}" style="width: 30%;">
+                <span class="value-name">DoseRate:</span>
+                <input type="number" id="dose_rate-all-value" name="dose_rate" value="{{ user.set_dose_rate }}" style="width: 25%;">
+                <span> uSv/h</span>
             </div> 
             <div>
-            <input type="range" id="cps-all-slider" min="0" max="500" value="{{ user.set_cps }}"
+            <input class="input-slider" type="range" id="dose_rate-all-slider" min="0" max="500" value="{{ user.set_dose_rate }}"
                 hx-post="/detector/-1/update-cps/"
                 hx-trigger="input,changed"
                 hx-swap="none"
-                name="set_cps"
+                name="set_dose_rate"
                >
             </div>
             <div>
-                <span class="value-name">Set Threshold:</span>
-                <input type="number" id="threshold-all-value" name="threshold" value="{{ user.set_threshold }}" style="width: 30%;">
+                <span class="value-name">Threshold:</span>
+                <input type="number" id="threshold-all-value" name="threshold" value="{{ user.set_threshold }}" style="width: 25%;">
+                <span> uSv/h</span>
             </div>
             <div>
-            <input type="range" id="threshold-all-slider" min="0" max="500" value="{{ user.set_threshold }}"
+            <input class="input-slider" type="range" id="threshold-all-slider" min="0" max="500" value="{{ user.set_threshold }}"
                 hx-post="/detector/-1/update-threshold/"
                 hx-trigger="input"
                 hx-swap="none"
@@ -43,18 +50,35 @@
                 <input type="button" value="Turn on" id="noise-all-on">
                 <input type="button" value="Turn off" id="noise-all-off">
             </div>
-
-
-
         </div>
     </div>
 
+    <div class="column is-4">
+        <div class="box">
+            <h2 class="subtitle mb-3">Background process</h2>
+            <div>
+                <span class="value-name"> Last update: </span>
+                <span class="value" id="last-update-value"> A/N </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<h1 class="title has-text-centered">Peoples</h1>
+
+<div class="columns">
+
     {% for user in users %}
-    <div class="column is-one-sixth">
+    <div class="column is-4">
         {% include "partials/detector_box.html" %}
     </div>
     {% endfor %}
 </div>
+
+
+    <div class="notification has-text-centered">
+        This page is active and content updates automatically.
+    </div>
 
 
 <script>
@@ -65,32 +89,37 @@
                 .then(data => {
                     const detectors = data.detectors;
                     detectors.forEach((detector, index) => {
-                        console.log(`Index: ${index}, Detector:`, detector);
-                        console.log(detector);
+                        //console.log(`Index: ${index}, Detector:`, detector);
+                        //console.log(detector);
                         
-                        const detectorElement = document.getElementById(`detector-${index+1}`);
-                        console.log(detectorElement, `detector-${index+1}`);
+                        const detectorElement = document.getElementById(`detector-${detector.id}`);
+                        //console.log(detectorElement, `detector-${detector.id}`);
                         if (detectorElement) {
-                            console.log(detectorElement);
-                            console.log(detector)
+                            //console.log(detectorElement);
+                            //console.log(detector)
                             
-                            detectorElement.querySelector('#cps-slider').value = detector.set_cps;
-                            detectorElement.querySelector('#cps-slider').dispatchEvent(new Event('input'));
-                            detectorElement.querySelector('#cps-value').value = detector.set_cps;
+                            detectorElement.querySelector('.set_dose_rate-slider').value = detector.set_dose_rate;
+                            //detectorElement.querySelector('.set_dose_rate-slider').dispatchEvent(new Event('input'));
+                            detectorElement.querySelector('.set_dose_rate-value').value = detector.set_dose_rate;
 
-                            detectorElement.querySelector('#threshold-slider').value = detector.set_threshold;
-                            detectorElement.querySelector('#threshold-slider').dispatchEvent(new Event('input'));
-                            detectorElement.querySelector('#threshold-value').value = detector.set_threshold;
+                            detectorElement.querySelector('.set_threshold-slider').value = detector.set_threshold;
+                            //detectorElement.querySelector('.set_threshold-slider').dispatchEvent(new Event('input'));
+                            detectorElement.querySelector('.set_threshold-value').value = detector.set_threshold;
 
                             detectorElement.querySelector('#noise-toggle').checked = detector.noise;
                             detectorElement.querySelector('#noise').textContent = detector.noise ? 'On' : 'Off';
 
-                            detectorElement.querySelector('#current-cps-value').textContent = detector.current_cps;
-                            detectorElement.querySelector('#dose-value').textContent = detector.dose;
-                            detectorElement.querySelector('#total-dose-value').textContent = detector.total_dose;
-                            detectorElement.querySelector('#alarm-value').textContent = detector.alarm ? 'Alarm' : 'No alarm';
-                            detectorElement.querySelector('#location-value').textContent = detector.location;
-                            detectorElement.querySelector('#group-value').textContent = detector.dose_rate;
+                            //detectorElement.querySelector('#cps-value').textContent = detector.cps;
+                            //detectorElement.querySelector('#dose-rate-value').textContent = detector.dose_rate.toFixed(2);
+                            //detectorElement.querySelector('#total-dose-value').textContent = detector.total_dose.toFixed(2);
+                            //detectorElement.querySelector('#alarm-value').textContent = detector.alert ? 'Alarm' : 'No alarm';
+                            if (detector.alert) {
+                                detectorElement.classList.add('has-background-danger-light');
+                            } else {
+                                detectorElement.classList.remove('has-background-danger-light');
+                            }
+                            //detectorElement.querySelector('#location-value').textContent = detector.location;
+                            //detectorElement.querySelector('#group-value').textContent = detector.group;
 
                         }
                     });
@@ -122,14 +151,14 @@
             });
         });
 
-        document.getElementById('cps-all-slider').addEventListener('input', function() {
+        document.getElementById('dose_rate-all-slider').addEventListener('input', function() {
             const value = this.value;
-            document.getElementById('cps-all-value').value = value;
+            document.getElementById('dose_rate-all-value').value = value;
             document.querySelectorAll('#detector-checkbox:checked').forEach(checkbox => {
             const detectorElement = checkbox.closest('.box');
             if (detectorElement) {
-                detectorElement.querySelector('#cps-slider').value = value;
-                detectorElement.querySelector('#cps-value').value = value;
+                detectorElement.querySelector('.set_dose_rate-slider').value = value;
+                detectorElement.querySelector('.set_dose_rate-value').value = value;
             }
             });
         });

@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}DEMOS Dashboard{% endblock %}</title>
+    <title>{% block title %}DEMODOS Dashboard{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+    
 
     <style>
         .value-name {
             font-weight: bold;
             margin-right: 0.5em;
         }
+
+        .input-slider {
+            width: 100%;
+        }
+
+        
+        input[type="number"] {
+            margin-left: 0.5em;
+            background: transparent;
+            border: none;
+            border-bottom: solid 1px gray;
+        }
+
+    
     </style>
-</head>
+    </head>
 <body>
     <!-- Hlavička -->
     <nav class="navbar has-shadow">
         <div class="navbar-brand">
-            <a class="navbar-item" href="/">DEMOS</a>
+            <a class="navbar-item" href="/">DEMODOS</a>
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/dashboard/">Dashboard</a>
                 <a class="navbar-item" href="/settings/">Settings</a>
+                <a class="navbar-item" href="/settings/detectors/">Detectors</a>
+                <a class="navbar-item" href="/settings/devices/">Devices</a>
                 <a class="navbar-item" href="/docs/">Documentation</a>
             </div>
         </div>
@@ -40,11 +57,33 @@
     <!-- Patička -->
     <footer class="footer">
         <div class="content has-text-centered">
-            <p>© 2024 DEMOS. All rights reserved.</p>
+            <p>DEMODOS, 2024, <a href="https://www.ust.cz/">Universal Scientific Technologies</a></p>
         </div>
     </footer>
 
     <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://unpkg.com/timeago.js/dist/timeago.min.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const timeago = window.timeago;
+        
+        
+        const updateTimeAgo = () => {
+            console.log("Updating time ago");
+            console.log(document.querySelectorAll('.calc-ago'));
+            document.querySelectorAll('.calc-ago').forEach(function(el) {
+                console.log(el);
+                const timestamp = el.getAttribute('data-timestamp');
+                if (timestamp) {
+                    el.textContent = timeago.format(new Date(timestamp), 'cs');
+                }
+            });
+        };
+
+        setInterval(updateTimeAgo, 1000);
+    });
+    </script>
 
     
 </body>

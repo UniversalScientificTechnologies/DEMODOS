@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}DEMODOS setting{% endblock %}
+
+{% block content %}
+
+<h2>Registred detectors</h2>
+<a href="{% url 'detector_edit' 0 %}" class="button is-primary">Add new detector</a>
+
+<div class="columns is-multiline">
+{% for detector in detectors %}
+
+<div class="column is-one-sixth">
+<div class="box {% if not detector.active %}has-background-grey-lighter{% endif %}" id="detector-{{detector.unique_id}}">
+    <div class="is-h2">
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                {{detector.id}}: <span>{{detector.name}}</span>
+            </div>
+            <div>
+                <a href="{% url 'detector_edit' detector.id %}" class="button is-small is-primary">Edit</a>
+                <a href="{% url 'detector_delete' detector.id %}" class="button is-small is-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    <hr class="my-1">
+
+        <div class="content">
+            <div>
+                <span class="value-name">Active:</span>
+                <span>{{detector.active|yesno:"Yes,No"}}</span>
+            </div>
+            <div>
+                <span class="value-name">Group: </span>
+                <span>{{detector.group}}</span>
+            </div>
+            <div>
+                <span class="value-name">Location: </span>
+                <span>{{detector.location}}</span>
+            </div>
+            <div>
+                <span class="value-name">FW: </span>
+                <span>{{detector.fw_version}}</span>
+            </div>
+            <div>
+                <span class="value-name">Type: </span>
+                <span>{{detector.type}}</span>
+            </div> 
+            <div>
+                <span class="value-name">Last IP address:</span>
+                <span>{{detector.ip_address}}</span>
+            </div>
+            
+            <div>
+                <span class="value-name">Assigned devices:</span>
+                {% for device in detector.devices.all %}
+                <div>
+                    <hr class="my-1">
+                    <span class="value-name">Device: </span>
+                    <span> {{device.type}} ({{device.unique_id}})</span>
+                    <div>
+                        <span class="value-name">Battery level: </span>
+                        <span>{{device.battery_level }} %</span>
+                    </div>
+                    <div>
+                        <span class="value-name">Charging status: </span>
+                        <span>{{device.charging_status }}</span>
+                    </div>
+                    <div>
+                        <span class="value-name">Last Connected: </span>
+                        <span>{{device.last_connection}}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>    
+        </div>
+
+</div>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}

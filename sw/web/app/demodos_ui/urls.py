@@ -17,13 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import dashboard
+from .views import dashboard, data, devices, detectors
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", dashboard.home, name="detector_dashboard"),
     path("dashboard/", dashboard.detector_dashboard, name="detector_dashboard"),
-    path("settings/", dashboard.settings, name="settings"),
+    path("detector/<int:detector_id>/get-info/", dashboard.detector_info.as_view(), name="detector_info"),
+    path("detector/<int:detector_id>/edit/", dashboard.detector_edit.as_view(), name="detector_edit"),
+    path("detector/<int:detector_id>/delete/", dashboard.detector_delete.as_view(), name="detector_delete"),
+    path("settings/devices/", devices.DeviceList.as_view(), name="settings_devices"),
+    path("settings/detectors/", detectors.DetectorConfig.as_view(), name="detector_list"),
+    path("data/<str:device>/", data.DetectorData.as_view(), name="data"),
     path("docs/", dashboard.docs, name="docs"),
     path("docs/<str:filename>/", dashboard.docs, name="docs"),
     path("update-dose/<int:user_id>/", dashboard.update_dose, name="update_dose"),

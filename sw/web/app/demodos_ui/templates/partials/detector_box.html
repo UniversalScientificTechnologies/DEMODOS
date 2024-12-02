@@ -8,19 +8,25 @@
     
     <div>
         <div>
-            <span class="value-name">CPS: </span>
+            <span class="value-name">Dose rate: </span>
             <span>
-                <input type="number" id="cps-value" name="cps" value="{{ user.set_cps }}" style="width: 30%;"
-                oninput="document.getElementById('cps-slider-{{ user.id }}').value = this.value;"
+                <input type="number" class="set_dose_rate-value" id="set_dose_rate-value-{{user.id}}" name="set_dose_rate" value="{{ user.set_dose_rate }}" style="width: 30%;"
+                    hx-post="/detector/{{ user.id }}/update-cps/"
+                    hx-trigger="input,changed delay:500ms"
+                    hx-swap="none"
+                    name="set_dose_rate"
+                    oninput="document.getElementById('set_dose_rate-slider-{{ user.id }}').value = this.value;"
                 >
             </span>
+            <span> uSv/h</span>
         </div>
         <div>
-            <input type="range" id="cps-slider" min="0" max="500" value="{{ user.set_cps }}"
+            <input type="range" class="set_dose_rate-slider input-slider" id="set_dose_rate-slider-{{user.id}}" min="0" max="500" step="0.1" value="{{ user.set_dose_rate }}"
                 hx-post="/detector/{{ user.id }}/update-cps/"
                 hx-trigger="input,changed"
                 hx-swap="none"
-                name="set_cps"
+                name="set_dose_rate"
+                oninput="document.getElementById('set_dose_rate-value-{{user.id}}').value = this.value;"
             >
         </div>
     </div>
@@ -29,10 +35,13 @@
         <div>
         <span class="value-name">Threshold: </span>
         <span>
-            <input type="value" id="threshold-value" name="threshold" value="{{ user.set_threshold }}" style="width: 30%;">
+            <input type="number" class="set_threshold-value" id="threshold-value" name="threshold" value="{{ user.set_threshold }}" style="width: 30%;">
+        </span>
+        <span>uSv/h</span>
         </div>  
+        
         <div>
-        <input type="range" id="threshold-slider" min="0" max="500" value="{{ user.set_threshold }}"
+        <input type="range" class="set_threshold-slider input-slider" id="threshold-slider" min="0" max="500" value="{{ user.set_threshold }}"
             hx-post="/detector/{{ user.id }}/update-threshold/"
             hx-trigger="input"
             hx-swap="none"
@@ -48,37 +57,16 @@
             hx-trigger="change"
             hx-swap="none"
             name="set_noise"
-            {{ user.noise|yesno:"checked," }}>
+            {{ user.noise|yesno:"checked,''" }}>
     </div>
-    <hr class="my-1">
-    <div>
-        <span class="value-name">CPS: </span>
-        <span class="value" id="current-cps-value">{{ user.current_cps }}</span>
-    </div>
-    <div>
-        <span class="value-name">Dose: </span>
-        <span class="value" id="dose-value">{{ user.dose }} mGy</span>
-    </div>
-    <div>
-        <span class="value-name">Total Dose: </span>
-        <span class="value" id="total-dose-value">{{ user.total_dose }} mSv</span>
-    </div>
-    <div>
-        <span class="value-name">Dose Rate: </span>
-        <span class="value" id="dose-rate-value">{{ user.dose_rate }} μSv/h</span>
-    </div>
-    <div>
-        <span class="value-name">Alarm: </span>
-        <span class="value" id="alarm-value">{{ user.alert|yesno:"Yes,No" }}</span>
-    </div>
-    <hr class="my-1">
-    <div>
-        <span class="value-name">Location: </span>
-        <span class="value" id="location-value">{{ user.location.name }}</span>
-    </div>
-    <div>
-        <span class="value-name">Group: </span>
-        <span class="value" id="group-value">{{ user.group.name }}</span>
-    </div>
+    
+    <span
+        hx-get="/detector/{{ user.id }}/get-info/"
+        hx-trigger="load, every 1s"
+        hx-swap="innerHTML"
+    >
+        {% include "partials/detector_box_info.html" %}
+
+    </span>
 </div>
 

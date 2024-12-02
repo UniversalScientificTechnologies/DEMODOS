@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}DEMODOS setting{% endblock %}
+
+{% block content %}
+
+<h2>Registred devices</h2>
+
+<div class="columns">
+{% for device in devices %}
+
+<div class="column is-one-sixth">
+<div class="box" id="device-{{device.unique_id}}">
+    <div class="is-h2">{{device.unique_id}} {{device.name}}</div>
+    <hr class="my-1">
+
+        <div class="content">
+            <div>
+                <span class="value-name">Created: </span>
+                <span>{{device.created_at}}</span>
+            </div>
+            <div>
+                <span class="value-name">HW ID: </span>
+                <span>{{device.unique_id}}</span>
+            </div>
+            <div>
+                <span class="value-name">FW: </span>
+                <span>{{device.fw_version}}</span>
+            </div>
+            <div>
+                <span class="value-name">Type: </span>
+                <span>{{device.type}}</span>
+            </div>  
+            <div>
+                <span class="value-name">Last Connected: </span>
+                <span>{{device.last_connection}}</span>
+            </div>
+            <div>
+                <span class="value-name">Last IP address:</span>
+                <span>{{device.ip_address}}</span>
+            </div>
+            <div>
+                <span class="value-name">Battery level: </span>
+                <span>{{device.battery_level }} %</span>
+            </div>
+            <div>
+                <span class="value-name">Charging status: </span>
+                <span>{{device.charging_status }}</span>
+            </div>
+            <div>
+                <span class="value-name">Assigned to:</span>
+                <span> {{device.detector}} </span>
+            </div>
+        </div>
+
+</div>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}

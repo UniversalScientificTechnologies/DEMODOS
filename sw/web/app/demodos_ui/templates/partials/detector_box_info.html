@@ -1,0 +1,45 @@
+<hr class="my-1">
+<div>
+    <span class="value-name">CPS: </span>
+    <span class="value" id="cps-value">{{ user.cps }}</span>
+</div>
+<div>
+    <span class="value-name">Dose Rate: </span>
+    <span class="value" id="dose-rate-value">{{ user.dose_rate|floatformat:2 }}</span>
+    <span> uSv/h</span>
+</div>
+<div>
+    <span class="value-name">Total Dose: </span>
+    <span class="value" id="total-dose-value">{{ user.total_dose|floatformat:2 }}</span>
+    <span> uSv </span>
+</div>
+<div>
+    <span class="value-name">Alarm: </span>
+    <span class="value" id="alarm-value">{{ user.alert|yesno:"Yes,No" }}</span>
+</div>
+<hr class="my-1">
+<div>
+    <span class="value-name">Location: </span>
+    <span class="value" id="location-value">{{ user.location.name }}</span>
+</div>
+<div>
+    <span class="value-name">Group: </span>
+    <span class="value" id="group-value">{{ user.group.name }}</span>
+</div>
+<hr class="my-1">
+<div>
+    {% for device in user.devices.all %}
+    <div>
+        <span class="value" id="device-value">{{ device.type }}</span>
+        <div>
+            <span class="value-name" Last connected: </span>
+            <span class="value calc-ago" id="device-value"> {{ device.last_connection|timesince }} ago</span>
+        </div>
+        <div>
+            <span class="value-name" Battery: </span>
+            <span class="value" id="device-value">{{ device.battery_level }}%  {{ device.charging_status|yesno:"Charging," }}</span>
+        </div>
+            
+    </div>
+    {% endfor %}
+</div>

@@ -3,20 +3,23 @@ from django.http import JsonResponse
 from demodos_ui.models import Detector, HistoricalData
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from demodos_ui.models import Location, Group
+from demodos_ui.models import Location, Group, Device, Detector
+from demodos_ui.forms import DeviceForm, DetectorForm
+
 
 from django.core.serializers import serialize
 import json
 import markdown
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 import os
+from django.views import View
 
 def home(request):
     return render(request, "home.html")
 
 def detector_dashboard(request):
-    users = Detector.objects.all().order_by("id")
+    users = Detector.objects.filter(active=True).order_by("id")
     return render(request, "dashboard.html", {"users": users})
 
 def update_dose(request, user_id):
@@ -54,13 +57,13 @@ def update_params(request, entity_type, entity_id):
         print("request.POST:", request.POST, flush=True)
 
         # Aktualizace CPS (pro detektor), threshold (pro lokalitu nebo skupinu)
-        if hasattr(entity, "set_cps"):
-            entity.set_cps = int(request.POST.get("set_cps", entity.set_cps))
-            print("entity.set_cps", entity.set_cps, flush=True)
-        if hasattr(entity, "set_threshold"):
-            entity.set_threshold = int(request.POST.get("set_threshold", entity.set_threshold))
+        if "set_dose_rate" in request.POST:
+            entity.set_dose_rate = float(request.POST.get("set_dose_rate", entity.set_dose_rate))
+            print("entity.set_dose_rate", entity.set_dose_rate, flush=True)
+        if "set_threshold" in request.POST:
+            entity.set_threshold = float(request.POST.get("set_threshold", entity.set_threshold))
             print("entity.set_threshold", entity.set_threshold, flush=True)
-        if hasattr(entity, "set_noise"):
+        if "set_noise" in request.POST:
             sn = request.POST.get("set_noise", entity.set_noise)
             if sn is "on":
                 entity.set_noise = True
@@ -70,23 +73,32 @@ def update_params(request, entity_type, entity_id):
         
         entity.save()
 
-        # Vracíme odpověď (hodnota nebo potvrzení)
-        return HttpResponse(entity.set_cps if hasattr(entity, "set_cps") else entity.set_threshold)
+        return HttpResponse("Ok")
 
 
 def data_endpoint(request):
     id = request.GET.get("detector_id")
-    print("ID", id)
     user = Detector.objects.filter(id=id).first()
-    print("USER", user)
     return render(request, "partials/detector_box.html", {"user": user})
 
 
 def get_data(request):
-    dets = Detector.objects.all().order_by("id")
+    dets = Detector.objects.filter(active=True).order_by("id")
     
-    dets = serialize('json', dets)
-    dets = [d["fields"] for d in json.loads(dets)]
+    dets = [
+        {
+            "id": d.id,
+            "name": d.name,
+            "dose_rate": d.dose_rate,
+            "total_dose": d.total_dose,
+            "cps": d.cps,
+            "set_threshold": d.set_threshold,
+            "set_dose_rate": d.set_dose_rate,
+            "noise": d.noise,
+            "alert": d.alert,
+        }
+        for d in dets
+    ]
     
     data = {"detectors": dets}
     
@@ -112,3 +124,53 @@ def docs(request, filename="index"):
     html_content = markdown.markdown(markdown_content)
 
     return render(request, "documentation.html", {"content": html_content})
+
+
+class detector_info(View):
+    def get(self, request, detector_id):
+        detector = get_object_or_404(Detector, id=detector_id)
+        
+        return render(request, "partials/detector_box_info.html", {"user": detector})
+    
+
+
+class detector_edit(View):
+    def get(self, request, detector_id):
+        
+        if detector_id == 0:
+            detector = Detector()
+        else:
+            detector = Detector.objects.get(id=detector_id)
+        
+        form = DetectorForm(instance=detector)
+        
+        return render(request, "detector_edit.html", {"user": detector, "form": form, "detector_id": detector.id})
+    
+    def post(self, request, detector_id):
+        if detector_id == 0:
+            detector = Detector()
+        else:
+            detector = Detector.objects.get(id=detector_id)
+        
+        # detector.name = request.POST.get("name", detector.name)
+        # detector.dose_rate = request.POST.get("dose_rate", detector.dose_rate)
+        # detector.total_dose = request.POST.get("total_dose", detector.total_dose)
+        # detector.cps = request.POST.get("cps", detector.cps)
+        # detector.set_threshold = request.POST.get("set_threshold", detector.set_threshold)
+        # detector.set_dose_rate = request.POST.get("set_dose_rate", detector.set_dose_rate)
+        # detector.save()
+
+        form = DetectorForm(request.POST, instance=detector)
+        
+        if form.is_valid():
+            form.save()
+            return render(request, "detector_edit.html", {"user": detector, "form": form, "detector_id": detector.id, "status": "ok", "message": "Data saved"})
+        else:
+            return render(request, "detector_edit.html", {"user": detector, "form": form, "detector_id": detector.id, "status": "err", "message": "Data not saved"})
+
+class detector_delete(View):
+    def get(self, request, detector_id):
+        detector = get_object_or_404(Detector, id=detector_id)
+        detector.delete()
+
+        return redirect("detector_list")

@@ -17,6 +17,20 @@ services:
     networks:
       - app_network
 
+  task:
+    build:
+      context: .
+    command: python run_task.py
+    environment:
+      - DJANGO_SETTINGS_MODULE=demodos_ui.settings
+    volumes:
+      - ./app:/app
+    depends_on:
+      - postgres
+    networks:
+      - app_network
+    restart: always
+
   postgres:
     image: postgres:15
     environment:
