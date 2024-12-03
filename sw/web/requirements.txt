@@ -1,8 +1,9 @@
-Django>=4.2,<5.0
-psycopg2-binary>=2.9.6
-gunicorn>=21.0.0
+django
+psycopg2-binary
+gunicorn
 django_redis
 django-htmx
+django_htmx
 crispy-bulma
 django-crispy-forms
 markdown
