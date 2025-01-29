@@ -1,0 +1,11 @@
+[Unit]
+Description=DEMODOs Collect Static Files
+After=demodos-migrate.service
+
+[Service]
+Type=oneshot
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/demodos
+EnvironmentFile=/opt/demodos/.env
+ExecStart=/opt/demodos/venv/bin/python manage.py collectstatic --noinput

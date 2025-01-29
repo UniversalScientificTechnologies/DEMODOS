@@ -1,0 +1,19 @@
+[Unit]
+Description=Django Task Runner
+After=postgres.service
+Requires=docker.service postgres.service
+
+[Service]
+Restart=always
+WorkingDirectory=/home/demodos/repos/ust/DEMODOS/sw/web/
+ExecStart=/usr/bin/docker run --rm \
+  --name task \
+  -v /home/demodos/repos/ust/DEMODOS/sw/web/:/app \
+  --env-file /home/demodos/repos/ust/DEMODOS/sw/web/.env \
+  --network=app_network \
+  your-image-name \
+  python run_task.py
+ExecStop=/usr/bin/docker stop task
+
+[Install]
+WantedBy=multi-user.target

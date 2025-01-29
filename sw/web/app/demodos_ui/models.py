@@ -33,6 +33,8 @@ class Device(models.Model):
     last_connection = models.DateTimeField(null=True, blank=True)
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     battery_level = models.IntegerField(default=None, null=True)
+    battery_voltage = models.FloatField(default=None, null=True)
+    wifi_rssi = models.FloatField(default=None, null=True)
     charging_status = models.BooleanField(default=None, null=True)
     fw_version = models.CharField(max_length=100, default=None, null=True)
 

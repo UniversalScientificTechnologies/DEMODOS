@@ -1,0 +1,14 @@
+[Unit]
+Description=DEMODOs Web Application
+After=network.target postgresql.service redis.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/demodos
+EnvironmentFile=/opt/demodos/.env
+ExecStart=/opt/demodos/venv/bin/python manage.py runserver 0.0.0.0:8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
